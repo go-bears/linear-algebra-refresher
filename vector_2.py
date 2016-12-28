@@ -1,3 +1,5 @@
+from math import sqrt
+
 class Vector(object):
     def __init__(self, coordinates):
         try:
@@ -23,6 +25,20 @@ class Vector(object):
     def times_scalar(self, c):
         new_coordinates = [c*x for x in self.coordinates]
         return Vector(new_coordinates)
+
+    def find_magnitude(self):
+        coordinates_squared = [i**2 for i in self.coordinates]
+        magnitude = sqrt(sum(coordinates_squared))
+        return magnitude
+
+    def find_normalization_vector(self):
+        try:
+            magnitude = self.find_magnitude()
+            normalization = self.times_scalar(1/magnitude)
+            return normalization
+
+        except ZeroDivisionError:
+            raise Exception("Cannot normalize the zero vector")
 
     def __str__(self):
         return 'Vector: {}'.format(self.coordinates)
