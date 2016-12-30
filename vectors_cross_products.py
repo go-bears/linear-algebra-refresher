@@ -45,6 +45,8 @@ class Vector(object):
         return Vector(new_coordinates)
 
     def multiply(self,v):
+        """Multiplies a vector's coordinates with another vector """
+
         multiplied_coordinates = [x*y for x,y in zip(self.coordinates, v.coordinates)]
         return Vector(multiplied_coordinates)
 
@@ -74,7 +76,7 @@ class Vector(object):
         return Vector(new_coordinates)
 
     def find_dot_product(self, v):
-        """Calcuates dot product of vector and another vector"""
+        """Calcuates dot product of a vector with another vector"""
 
         products = [x*y for x,y in zip(self.coordinates, v.coordinates)]
         return sum(products)
@@ -154,6 +156,7 @@ class Vector(object):
 
     def find_cross_product_of(self, v):
         """Calculates cross product coordinates of 2-d or 3d vectors """
+        
         if self.dimension == 2 and v.dimension == 2:
             y0,y1 = self.coordinates
             z0,z1 = v.coordinates
@@ -169,6 +172,7 @@ class Vector(object):
 
     def find_parallogram_area_of(self, vector2):
         """Calculates parallelogram area from two vectors """
+
         cross_product_vector = self.find_cross_product_of(vector2)
         return Decimal(cross_product_vector.find_magnitude())
 

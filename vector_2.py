@@ -40,6 +40,10 @@ class Vector(object):
         except ZeroDivisionError:
             raise Exception("Cannot normalize the zero vector")
 
+    def find_dot_product(self, v):
+        products = [x*y for x,y in zip(self.coordinates, v.coordinates)]
+        return sum(products)
+
     def __str__(self):
         return 'Vector: {}'.format(self.coordinates)
 
